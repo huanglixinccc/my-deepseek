@@ -284,7 +284,7 @@ function FeishuNotify() {
       <Hero>
         <HeroTitle>飞书通知控制台</HeroTitle>
         <HeroText>
-          一键发送澄清卡片、过筛率预警、同步职位提醒或自定义消息。默认发送给 {DEFAULT_RECIPIENT_NAME}，也支持临时指定其他 open_id。
+          一键发送澄清卡片、过筛率预警、同步职位提醒、首轮寻访确认或自定义消息。默认发送给 {DEFAULT_RECIPIENT_NAME}，也支持临时指定其他 open_id。
         </HeroText>
       </Hero>
 
@@ -355,6 +355,23 @@ function FeishuNotify() {
             onClick={() => runAction('sync-position', '/api/position-context/sync-position-reminder')}
           >
             {loadingKey === 'sync-position' ? '发送中…' : '发送同步职位提醒'}
+          </ActionButton>
+        </ActionCard>
+
+        <ActionCard>
+          <ActionIcon $bg="#f0fdf4">✅</ActionIcon>
+          <ActionTitle>首轮寻访确认</ActionTitle>
+          <ActionDescription>
+            发送「【AI 产品经理】首轮寻访已完成，请确认候选人方向」卡片，请 HR 确认候选人方向与筛选条件。
+          </ActionDescription>
+          <ActionButton
+            type="button"
+            disabled={loadingKey === 'first-round'}
+            onClick={() =>
+              runAction('first-round', '/api/position-context/first-round-search-confirmation')
+            }
+          >
+            {loadingKey === 'first-round' ? '发送中…' : '发送首轮寻访确认'}
           </ActionButton>
         </ActionCard>
       </Grid>
