@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import './App.css';
 import AddressParser from './AddressParser';
 import ChatApp from './ChatApp';
-import ManualClarification from './ManualClarification';
+import FeishuNotify from './FeishuNotify';
 
 const Page = styled.div`
   min-height: 100vh;
@@ -99,7 +99,7 @@ function AppLayout({ title, subtitle, children }) {
               <NavLink to="/address">地址识别</NavLink>
             </li>
             <li>
-              <NavLink to="/manual-clarification">职位澄清</NavLink>
+              <NavLink to="/feishu-notify">飞书通知</NavLink>
             </li>
           </ul>
         </Navigation>
@@ -130,10 +130,18 @@ function App() {
           }
         />
         <Route
+          path="/feishu-notify"
+          element={
+            <AppLayout title="飞书通知" subtitle="澄清卡片 · 预警提醒 · 自定义消息">
+              <FeishuNotify />
+            </AppLayout>
+          }
+        />
+        <Route
           path="/manual-clarification"
           element={
-            <AppLayout title="手动触发职位澄清" subtitle="飞书澄清卡片 · 线上接口">
-              <ManualClarification />
+            <AppLayout title="飞书通知" subtitle="澄清卡片 · 预警提醒 · 自定义消息">
+              <FeishuNotify />
             </AppLayout>
           }
         />
