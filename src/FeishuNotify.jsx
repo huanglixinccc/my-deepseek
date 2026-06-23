@@ -284,7 +284,7 @@ function FeishuNotify() {
       <Hero>
         <HeroTitle>飞书通知控制台</HeroTitle>
         <HeroText>
-          一键发送澄清卡片、过筛率预警、同步职位提醒、首轮寻访确认或自定义消息。默认发送给 {DEFAULT_RECIPIENT_NAME}，也支持临时指定其他 open_id。
+          一键发送澄清卡片、过筛率预警、同步职位提醒、首轮寻访确认、可联系候选人提醒或自定义消息。默认发送给 {DEFAULT_RECIPIENT_NAME}，也支持临时指定其他 open_id。
         </HeroText>
       </Hero>
 
@@ -372,6 +372,23 @@ function FeishuNotify() {
             }
           >
             {loadingKey === 'first-round' ? '发送中…' : '发送首轮寻访确认'}
+          </ActionButton>
+        </ActionCard>
+
+        <ActionCard>
+          <ActionIcon $bg="#fef3c7">👤</ActionIcon>
+          <ActionTitle>可联系候选人提醒</ActionTitle>
+          <ActionDescription>
+            发送「有新的可联系候选人，请处理」卡片，包含候选人详情链接。
+          </ActionDescription>
+          <ActionButton
+            type="button"
+            disabled={loadingKey === 'contactable-candidate'}
+            onClick={() =>
+              runAction('contactable-candidate', '/api/position-context/contactable-candidate-alert')
+            }
+          >
+            {loadingKey === 'contactable-candidate' ? '发送中…' : '发送可联系候选人提醒'}
           </ActionButton>
         </ActionCard>
       </Grid>
