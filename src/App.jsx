@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import './App.css';
 import AddressParser from './AddressParser';
 import ChatApp from './ChatApp';
+import ManualClarification from './ManualClarification';
 
 const Page = styled.div`
   min-height: 100vh;
@@ -97,6 +98,9 @@ function AppLayout({ title, subtitle, children }) {
             <li>
               <NavLink to="/address">地址识别</NavLink>
             </li>
+            <li>
+              <NavLink to="/manual-clarification">职位澄清</NavLink>
+            </li>
           </ul>
         </Navigation>
       </TopBar>
@@ -122,6 +126,14 @@ function App() {
           element={
             <AppLayout title="地址识别" subtitle="DeepSeek 智能解析">
               <AddressParser />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/manual-clarification"
+          element={
+            <AppLayout title="手动触发职位澄清" subtitle="飞书澄清卡片 · 线上接口">
+              <ManualClarification />
             </AppLayout>
           }
         />
